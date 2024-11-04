@@ -1,6 +1,6 @@
-require("dotenv").config();
+import "dotenv/config.js";
 
-async function getImages(query) {
+export default async function getImages(query) {
   const endpoint = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.API_KEY}&q=${query}&limit=25&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
 
   try {
@@ -9,11 +9,10 @@ async function getImages(query) {
     const urls = await json.data.map((element) => {
       return element.url;
     });
-    console.log(urls);
     return urls;
   } catch (error) {
     console.log(error);
   }
 }
 
-getImages("chickens");
+
