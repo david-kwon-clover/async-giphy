@@ -7,7 +7,7 @@ export default async function getImages(query) {
     const response = await fetch(endpoint);
     const json = await response.json();
     const urls = await json.data.map((element) => {
-      return element.url;
+      return element.images.original.url;
     });
     return urls;
   } catch (error) {
